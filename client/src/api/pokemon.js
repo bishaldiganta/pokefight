@@ -8,7 +8,7 @@ const getPokemons = async () => {
   try {
     const result = await axios(url);
     console.log(result.data);
-    return result.data;
+    return result.data; // QUESTION - Do we have to map anything here? 
   } catch (error) {
     console.log(error);
   }
