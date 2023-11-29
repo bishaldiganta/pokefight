@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
+import PokemonCard from "../components/PokemonCard";
 
 const PokeList = () => {
   const pokemons = useLoaderData();
@@ -7,9 +8,9 @@ const PokeList = () => {
   return (
     <div>
       <h1>Pokemons</h1>
-      <ul>{pokemons.map((pokemon) =>{
-        return <li key={pokemon.id}>{pokemon.name.english}</li> //TO-DO - Create Poke Card component which has Pokemon as props.
-      })}</ul>
+      <div className="grid grid-cols-3">{pokemons.map((pokemon) =>{
+        return <PokemonCard key={pokemon.id} pokemon={pokemon}/> //TO-DO - Create Poke Card component which has Pokemon as props.
+      })}</div>
     </div>
   );
 };
