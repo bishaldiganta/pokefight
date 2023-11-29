@@ -2,7 +2,7 @@ import React from "react";
 
 const PokemonCard = ({ pokemon }) => {
   return (
-    <div className="rounded-md border-4 border-solid border-amber-300">
+    <div className="card w-20vh h-27.5vh shadow-inset-0 border-4 border-yellow-300 border-solid hover:shadow-lg hover:border-opacity-100">
       <div>
         <h2>{pokemon.name.english}</h2>
         <p>{pokemon.base.HP}</p>
@@ -15,9 +15,12 @@ const PokemonCard = ({ pokemon }) => {
       />
 
       <div></div>
-      <div></div>
+      <div>
+        
+      </div>
     </div>
   );
 };
+
 
 export default PokemonCard;
