@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import "./style.css";
+import "./index.css";
 import RootLayout from "./layout/RootLayout";
 import PokeList from "./pages/PokeList";
 import getPokemons from "./api/pokemon";
