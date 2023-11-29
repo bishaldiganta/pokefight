@@ -1,11 +1,11 @@
 import React from "react";
 import axios from "axios";
 
-const url = `https://pokeapi.co/api/v2/pokemon/charizard`;
+const url = `https://pokeapi.co/api/v2/pokemon/`;
 
-const getPokemons = async () => {
+const getSinglePokemon = async (name) => {
   try {
-    const result = await axios(url);
+    const result = await axios(`${url}${name}`);
     console.log(result.data);
     return result.data;
   } catch (error) {
@@ -13,4 +13,4 @@ const getPokemons = async () => {
   }
 };
 
-export default getPokemons;
+export default getSinglePokemon;
