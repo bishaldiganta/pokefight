@@ -1,8 +1,7 @@
 import React from "react";
 import axios from "axios";
-import { Await } from "react-router-dom";
 
-const url = `http://localhost:8000/pokemon`;
+const url = `https://pokeapi.co/api/v2/pokemon/charizard`;
 
 const getPokemons = async () => {
   try {
