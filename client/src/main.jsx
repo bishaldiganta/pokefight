@@ -13,28 +13,28 @@ import getPokemons from "./api/pokemon";
 import getSinglePokemon from "./api/pokeapi";
 
 const router = createBrowserRouter([
-	{
-		path: "/",
-		element: <RootLayout />,
-		children: [
-			{
-				path: "/",
-				element: <PokeList />,
-				index: true,
-				loader: getPokemons, // QUESTION do we even need to define the function in a seperate file?
-			},
-			{
-				path: "/pokemon/:name",
-				element: <PokeDetails />,
-				index: true,
-				loader: getSinglePokemon, // QUESTION: how can I pass the name params to the loader function?
-			},
-		],
-	},
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      {
+        path: "/",
+        element: <PokeList />,
+        index: true,
+        loader: getPokemons,
+      },
+      {
+        path: "/pokemon/:name",
+        element: <PokeDetails />,
+        index: true,
+        loader: getSinglePokemon,
+      },
+    ],
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-	<React.StrictMode>
-		<RouterProvider router={router} />
-	</React.StrictMode>
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
 );
