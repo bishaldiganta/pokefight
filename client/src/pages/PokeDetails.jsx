@@ -3,11 +3,18 @@ import { useLoaderData } from "react-router-dom";
 
 const PokeDetails = () => {
   const pokemon = useLoaderData();
-  console.log(pokemon);
+  console.log(pokemon.data);
+  const pokeData = pokemon.data;
   return (
-    <div>
-      more information about the pokemon from the pokeapi and not the json
-    </div>
+    <>
+      <h2>Heading</h2>
+      <p>Information about pokemon</p>
+      <p>Grid with the pokemcards</p>
+      {pokeData.map((pokemon) => {
+        return <img src={pokemon.images.large} key={pokemon.id} />;
+      })}
+      <p>evolution stages??</p>
+    </>
   );
 };
 
