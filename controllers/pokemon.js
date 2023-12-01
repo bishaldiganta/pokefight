@@ -1,8 +1,14 @@
 const data = require("../pokedex.json");
+const Pokemon = require("../models/pokemon");
 
 const getPokemons = async (req, res) => {
-  console.log(data);
-  res.json(data);
+  try {
+    const pokemons = await Pokemon.find({}).sort({ id: 1 }).skip(0).limit(9);
+    res.json(pokemons);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send(error.message);
+  }
 };
 
 const getSinglePokemon = async (req, res) => {

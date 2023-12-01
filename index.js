@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const port = 8000;
 const cors = require("cors");
+require("./db");
 
 //using Router here!
 const pokeRouter = require("./routes/pokemon");
