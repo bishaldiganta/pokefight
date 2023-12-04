@@ -8,18 +8,19 @@ const typeColors = {
   water: "bg-gradient-to-b from-sky-700 via-cyan-400 to-sky-900",
   electric: "bg-gradient-to-b from-yellow-400 via-lime-200 to-yellow-600",
   grass: "bg-gradient-to-b from-green-600 via-lime-400 to-emerald-800",
-  ice: "",
+  bug: "bg-gradient-to-b from-lime-800 via-green-400 to-lime-950",
   fighting: "bg-gradient-to-b from-red-400 via-orange-300 to-red-900",
-  poison: "bg-purple-400",
-  ground: "bg-yellow-600",
-  flying: "bg-blue-300",
-  fairy: "",
-  psychic: "",
-  metal: "",
-  dragon: "",
-  lightning: "",
-  darkness: "",
-  colorless: "",
+  poison: "bg-gradient-to-b from-purple-700 via-fuchsia-400 to-purple-950",
+  ground: "bg-gradient-to-b from-yellow-900 via-stone-500 to-stone-800",
+  flying: "bg-gradient-to-b from-cyan-700 via-sky-200 to-sky-800",
+  fairy: "bg-gradient-to-b from-pink-700 via-pink-300 to-pink-900",
+  psychic: "bg-gradient-to-b from-violet-600 via-purple-200 to-violet-950",
+  rock: "bg-gradient-to-b from-stone-900 via-neutral-400 to-stone-800",
+  ghost: "bg-gradient-to-b from-slate-900 via-slate-400 to-slate-950",
+  ice: "bg-gradient-to-b from-cyan-500 via-cyan-100 to-cyan-900",
+  dragon: "bg-gradient-to-b from-teal-700 via-teal-300 to-teal-900",
+  steel: "bg-gradient-to-b from-zinc-700 via-zinc-200 to-zinc-900",
+  dark: "bg-gradient-to-b from-gray-700 via-gray-300 to-gray-950",
 };
 
 const PokemonCard = ({ pokemon }) => {
@@ -31,6 +32,7 @@ const PokemonCard = ({ pokemon }) => {
     typeColors[pokemon.type[0].toLowerCase()] || "bg-gray-400";
   return (
     <div
+      //TO-DO: make the background round and the japanes text bigger
       //order-first lg:order-none border-8 border-solid border-amber-300 py-10 px-8 pb-28
       className={clsx("shadow-lg rounded-md max-w-xs", backgroundColorClass)}
       onClick={handleClick}
