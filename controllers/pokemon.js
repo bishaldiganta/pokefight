@@ -3,7 +3,11 @@ const Pokemon = require("../models/pokemon");
 
 const getPokemons = async (req, res) => {
   try {
-    const pokemons = await Pokemon.find({}).sort({ id: 1 }).skip(0).limit(9);
+    const { skip, limit = 9 } = req.query;
+    const pokemons = await Pokemon.find({})
+      .sort({ id: 1 })
+      .skip(skip)
+      .limit(limit);
     res.json(pokemons);
   } catch (error) {
     console.log(error);
