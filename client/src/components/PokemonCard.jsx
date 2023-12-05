@@ -32,7 +32,7 @@ const PokemonCard = ({ pokemon }) => {
   return (
     <div
       className={clsx(
-        "shadow-lg rounded-md overflow-hidden max-w-xs order-first lg:order-none border-8 border-solid border-amber-300 py-10 px-8 pb-28",
+        "shadow-lg rounded-md overflow-hidden max-w-xs order-first lg:order-none border-8 border-solid border-yellow-400 py-10 px-8 pb-28",
         backgroundColorClass
       )}
       onClick={handleClick}
@@ -63,5 +63,6 @@ const PokemonCard = ({ pokemon }) => {
     </div>
   );
 };
+
 
 export default PokemonCard;
