@@ -3,8 +3,19 @@ const Pokemon = require("../models/pokemon");
 
 const getPokemons = async (req, res) => {
   try {
-    const pokemons = await Pokemon.find({}).sort({ id: 1 }).skip(0).limit(9);
-    res.json(pokemons);
+    const { skip, limit = 9, q } = req.query;
+    console.log(q);
+    if (!q) {
+      const pokemons = await Pokemon.find({})
+        .sort({ id: 1 })
+        .skip(skip)
+        .limit(limit);
+      res.json(pokemons);
+    } else {
+      // TO-DO: capitalize the first letter of q to ensure the name can be found
+      const filterpokemons = await Pokemon.find({ "name.english": q });
+      res.json(filterpokemons);
+    }
   } catch (error) {
     console.log(error);
     res.status(500).send(error.message);
