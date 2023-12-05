@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import pokeArray from "../game/pokearray";
-import { getpokeCard } from "../api/tcgapi";
+import pokeArray from "../game/pokearray"; // these are the card ids which are available to fight with
+import { getpokeCard } from "../api/tcgapi"; // Pokemon Card Api function which returns back objects for a card with one id
 import WinningPage from "./WinningPage";
 
 const GameTest = () => {
-  const [computerCard, setComputerCard] = useState([]);
-  const [playerCard, setPlayerCard] = useState(null);
+  const [computerCard, setComputerCard] = useState({}); // card object of computer gets saved here
+  const [playerCard, setPlayerCard] = useState({}); // card object of user gets saved here
 
-  const [computerHP, setComputerHP] = useState(0);
-  const [playerHP, setPlayerHP] = useState(0);
+  const [computerHP, setComputerHP] = useState(0); // Health Points of computer
+  const [playerHP, setPlayerHP] = useState(0); // Health points of user
 
   useEffect(() => {
-    assignCards();
+    assignCards(); // once the page is rendered the computer and the user get assigned a random card from the pokearray array
   }, []);
 
   const assignCards = () => {
