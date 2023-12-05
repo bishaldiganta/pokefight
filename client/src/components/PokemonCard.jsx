@@ -40,11 +40,12 @@ const PokemonCard = ({ pokemon }) => {
       )}
       onClick={handleClick}
     >
-      <div className="relative w-full">
-        <h2 className="text-2xl absolute -translate-y-1/2 -translate-x-1/2 left-1/2 top-1/2">
+      <div className="relative w-full ">
+        <h2 className="text-2xl absolute -translate-y-1/2 -translate-x-1/2 left-1/2 top-1/2 ">
+          {/* TO-DO : make font stand out more either by using backdrop-contrast-50 or a background color , or move the writin down into the orbs */}
           {pokemon.name.english}
         </h2>
-        <p className="text-4xl tracking-wider	text-stone-700/50 absolute -translate-y-1/2 -translate-x-1/4 left-1/2 top-1/2 w-full ">
+        <p className="text-4xl tracking-wider	text-stone-700/50 absolute -translate-y-1/2 -translate-x-1/4 left-1/2 top-1/2 w-full">
           {pokemon.name.japanese}
         </p>
       </div>

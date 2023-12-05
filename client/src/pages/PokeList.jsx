@@ -9,11 +9,11 @@ const PokeList = () => {
   let location = useLocation();
   /*   console.log(pokemons);
    */
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams(); //these search parameters can be used by the loader function
 
   const [skip, setSkip] = useState(() => {
     const startingIndex = location.search.indexOf("skip");
-    if (startingIndex === -1) return 0;
+    if (startingIndex === -1) return 0; // if there is no skip query provided then the initial state should be 0
     const number = +location.search.split("=")[1];
     console.log("Number:", number);
     return number;
@@ -52,7 +52,7 @@ const PokeList = () => {
         <img src="../assets/images/pokesearch.png" alt="" width="50px" />
         <input type="search" onChange={handleSearchChange} />
       </form>
-      <div className=" max-w-5xl mx-auto place-content-center justify-center justify-items-center grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-5">
+      <div className=" max-w-5xl mx-auto place-content-center justify-center justify-items-center grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10 m-3">
         {pokemons.map((pokemon) => {
           return <PokemonCard key={pokemon.id} pokemon={pokemon} />;
         })}
