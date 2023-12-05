@@ -26,10 +26,34 @@ const GameTest = () => {
     : console.log(playerCard, computerCard);
 
   return (
-  <div>
-    <div>GameTest</div>
-    <div className="player-card"><img src={playerCard?.images.large}/></div>
-  </div>
-)};
+    <div>
+      <div>GameTest</div>
+      <div className="player-card">
+        <div className="flex gap-2 justify-center">
+          {playerCard?.attacks.map((attack) => {
+            return (
+              <button className="rounded-lg px-4 py-2 bg-red-500 text-blue-100 hover:bg-blue-600 duration-300 m-2">
+                {attack.name}
+              </button>
+            );
+          })}{" "}
+          {/* TO-DO Add conditional styling for buttons CLSX*/}{" "}
+        </div>
+        <div className="flex justify-center">
+        <div
+        className="health-bar w-4/5 h-5 p-1 bg-gray-300 rounded relative"
+        data-total="1000"
+        data-value="1000"
+      >
+        <div className="bar bg-red-600 w-full h-2.5 relative"></div>
+        <div className="hit bg-white bg-opacity-60 absolute top-0 right-0 bottom-0 w-0"></div>
+      </div>
+          <p>{playerCard?.hp}</p>
+        </div>
+        <img src={playerCard?.images.large} />
+      </div>
+    </div>
+  );
+};
 
 export default GameTest;
