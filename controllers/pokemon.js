@@ -12,6 +12,7 @@ const getPokemons = async (req, res) => {
         .limit(limit);
       res.json(pokemons);
     } else {
+      // TO-DO: capitalize the first letter of q to ensure the name can be found
       const filterpokemons = await Pokemon.find({ "name.english": q });
       res.json(filterpokemons);
     }
