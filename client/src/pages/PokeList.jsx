@@ -1,18 +1,25 @@
 import React from "react";
-import { useLoaderData, useSearchParams } from "react-router-dom";
+import { useLoaderData, useSearchParams, useLocation } from "react-router-dom";
 import PokemonCard from "../components/PokemonCard";
 import { useState } from "react";
 import pokeArray from "../game/pokearray";
 
 const PokeList = () => {
   let pokemons = useLoaderData();
+  let location = useLocation();
   /*   console.log(pokemons);
    */
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [skip, setSkip] = useState(0);
+  const [skip, setSkip] = useState(() => {
+    const startingIndex = location.search.indexOf("skip");
+    if (startingIndex === -1) return 0;
+    const number = +location.search.split("=")[1];
+    console.log("Number:", number);
+    return number;
+  });
   const [query, setQuery] = useState("");
-
+  console.log(skip);
   const handleNext = () => {
     setSkip((prev) => {
       const newSkip = prev + 9;
@@ -20,6 +27,7 @@ const PokeList = () => {
       return newSkip;
     });
   };
+  console.log(location.search);
 
   const handlePrev = () => {
     setSkip((prev) => {

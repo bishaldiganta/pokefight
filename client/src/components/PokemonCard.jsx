@@ -34,25 +34,28 @@ const PokemonCard = ({ pokemon }) => {
     <div
       //TO-DO: make the background round and the japanes text bigger
       //order-first lg:order-none border-8 border-solid border-amber-300 py-10 px-8 pb-28
-      className={clsx("shadow-lg rounded-md max-w-xs", backgroundColorClass)}
+      className={clsx(
+        "shadow-lg rounded-full aspect-square max-w-xs",
+        backgroundColorClass
+      )}
       onClick={handleClick}
     >
-      <div className="flex justify-end gap-2">
-        <h2>{pokemon.name.english}</h2>
-        <p className="text-4xl tracking-wider	text-stone-700/25 -mt-3 -ml-24">
+      <div className="relative w-full">
+        <h2 className="text-2xl absolute -translate-y-1/2 -translate-x-1/2 left-1/2 top-1/2">
+          {pokemon.name.english}
+        </h2>
+        <p className="text-4xl tracking-wider	text-stone-700/50 absolute -translate-y-1/2 -translate-x-1/4 left-1/2 top-1/2 w-full ">
           {pokemon.name.japanese}
         </p>
-        <p>{pokemon.base.HP}</p>
       </div>
 
       <img
-        className="w-full h-40 sm:h-48 object-cover"
+        className="w-full object-cover"
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`}
         alt={pokemon.name.english}
       />
     </div>
   );
 };
-
 
 export default PokemonCard;
