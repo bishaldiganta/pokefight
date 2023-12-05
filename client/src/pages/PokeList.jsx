@@ -2,10 +2,12 @@ import React from "react";
 import { useLoaderData, useSearchParams } from "react-router-dom";
 import PokemonCard from "../components/PokemonCard";
 import { useState } from "react";
+import pokeArray from "../game/pokearray";
 
 const PokeList = () => {
   let pokemons = useLoaderData();
-  console.log(pokemons);
+  /*   console.log(pokemons);
+   */
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [skip, setSkip] = useState(0);

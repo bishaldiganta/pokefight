@@ -32,16 +32,9 @@ const PokemonCard = ({ pokemon }) => {
     typeColors[pokemon.type[0].toLowerCase()] || "bg-gray-400";
   return (
     <div
-<<<<<<< HEAD
       //TO-DO: make the background round and the japanes text bigger
       //order-first lg:order-none border-8 border-solid border-amber-300 py-10 px-8 pb-28
       className={clsx("shadow-lg rounded-md max-w-xs", backgroundColorClass)}
-=======
-      className={clsx(
-        "shadow-lg rounded-md overflow-hidden max-w-xs order-first lg:order-none border-8 border-solid border-yellow-400 py-10 px-8 pb-28",
-        backgroundColorClass
-      )}
->>>>>>> eb48e3062ee38eefcc609edc3ff7da79df482b1c
       onClick={handleClick}
     >
       <div className="flex justify-end gap-2">

@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import background from "../assets/svg/background.svg"
+import GameTest from "../components/GameTest";
 
 const RootLayout = () => {
   return (
@@ -10,7 +11,7 @@ const RootLayout = () => {
       <div>
         <Navbar />
       </div>
-      <div className="bg-scroll bg-no-repeat bg-cover" style={{ backgroundImage: `url(${background})` }}>
+      <div>
         <Outlet />
       </div>
       <div>

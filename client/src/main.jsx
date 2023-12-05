@@ -11,7 +11,8 @@ import PokeDetails from "./pages/PokeDetails";
 //Helper functions for the APIS
 import getPokemons from "./api/pokemon";
 import getSinglePokemon from "./api/pokeapi";
-import getPokeCards from "./api/tcgapi";
+import { getPokeCards } from "./api/tcgapi.js";
+import GameTest from "./components/GameTest.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
         element: <PokeDetails />,
         loader: getPokeCards,
       },
+      {
+        path: "/game",
+        element: <GameTest />,
+      }
     ],
   },
 ]);
