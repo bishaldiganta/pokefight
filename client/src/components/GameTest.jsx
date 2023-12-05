@@ -5,7 +5,7 @@ import WinningPage from "./WinningPage";
 
 const GameTest = () => {
   const [computerCard, setComputerCard] = useState({}); // card object of computer gets saved here
-  const [playerCard, setPlayerCard] = useState({}); // card object of user gets saved here
+  const [playerCard, setPlayerCard] = useState(null); // card object of user gets saved here
 
   const [computerHP, setComputerHP] = useState(0); // Health Points of computer
   const [playerHP, setPlayerHP] = useState(0); // Health points of user
@@ -83,10 +83,11 @@ const GameTest = () => {
   ) : playerHP === "you lose" ? (
     "you are a looser"
   ) : (
-    <div>
+    <div className="flex flex-row-reverse m-6">
       <div className="computer-card">
+        <h2>Computer Card</h2>
         <div className="flex justify-center">
-          <img src={computerCard?.images?.large} className="m-2 w-2/6" />
+          <img src={computerCard?.images?.large} className="m-2 max-w-sm" />
         </div>
 
         <div className="flex justify-center">
@@ -104,12 +105,8 @@ const GameTest = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-center">
-        <img src="../../public/assets/images/15.png" alt="" className="w-1/6" />
-      </div>
-
-      <div className="player-card">
-        <div className="flex gap-2 justify-center">
+      <div className="flex flex-col items-center justify-center ">
+      <div className="flex gap-2 justify-center">
           {playerCard?.attacks.map((attack) => {
             return (
               <button
@@ -123,7 +120,17 @@ const GameTest = () => {
           })}{" "}
           {/* TO-DO Add conditional styling for buttons CLSX*/}{" "}
         </div>
+        <img src="../../public/assets/images/15.png" alt="" className="w-1/6" />
+      </div>
 
+      <div className="player-card">
+      <h2>Player Card</h2>
+
+
+        <div className="flex justify-center">
+          <img src={playerCard?.images?.large} className="m-2 max-w-sm min-w-xs" />
+        </div>
+        
         <div className="flex justify-center">
           <div
             className="health-bar w-4/5 h-5 p-1 bg-gray-300 rounded relative"
@@ -137,9 +144,6 @@ const GameTest = () => {
             <div className="hit bg-white bg-opacity-60 absolute top-0 right-0 bottom-0 w-0"></div>
           </div>
           <p>{playerHP}</p>
-        </div>
-        <div className="flex justify-center">
-          <img src={playerCard?.images?.large} className="m-2 w-2/6" />
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Navbar() {
+function Navbar() { //TO-DO Add Game Link and NavLink functionality
   return (
     <nav className="rounded-md bg-yellow-400  text-black-700 p-3">
       <div className="container mx-auto flex justify-between items-center">
