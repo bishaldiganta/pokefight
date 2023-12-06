@@ -7,8 +7,8 @@ const GameTest = () => {
   const [computerCard, setComputerCard] = useState({}); // card object of computer gets saved here
   const [playerCard, setPlayerCard] = useState(null); // card object of user gets saved here
 
-  const [computerHP, setComputerHP] = useState(0); // Health Points of computer
-  const [playerHP, setPlayerHP] = useState(0); // Health points of user
+  const [computerHP, setComputerHP] = useState(1); // Health Points of computer
+  const [playerHP, setPlayerHP] = useState(1); // Health points of user
 
   useEffect(() => {
     assignCards(); // once the page is rendered the computer and the user get assigned a random card from the pokearray array
@@ -77,6 +77,7 @@ const GameTest = () => {
     "you are a looser"
   ) : (
     <div className="flex flex-row-reverse m-6">
+      
       <div className="computer-card">
         <h2>Computer Card</h2>
         <div className="flex justify-center">

@@ -13,6 +13,9 @@ import getPokemons from "./api/pokemon";
 import getSinglePokemon from "./api/pokeapi";
 import { getPokeCards } from "./api/tcgapi.js";
 import GameTest from "./components/GameTest.jsx";
+import Modal from "react-modal";
+
+Modal.setAppElement('#root');
 
 const router = createBrowserRouter([
   {
@@ -34,7 +37,7 @@ const router = createBrowserRouter([
       {
         path: "/game",
         element: <GameTest />,
-      }
+      },
     ],
   },
 ]);

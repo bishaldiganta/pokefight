@@ -9,16 +9,16 @@ function Navbar() {
         <div className="text-xl font-bold ">PokéApp</div>
         <div>
           <NavLink
-            href="/home"
+            to="/"
             className="px-4 hover:text-gray-200 text-lg font-bold"
           >
-            Home
-          </NavLink>
-          <NavLink href="" className="px-4 hover:text-gray-200 text-lg font-bold">
             Pokédex
           </NavLink>
-          <NavLink href="" className="px-4 hover:text-gray-200 text-lg font-bold">
-            About
+          <NavLink to="/game" className="px-4 hover:text-gray-200 text-lg font-bold">
+            Game
+          </NavLink>
+          <NavLink to="" className="px-4 hover:text-gray-200 text-lg font-bold">
+            Leaderboard
           </NavLink>
         </div>
       </div>
