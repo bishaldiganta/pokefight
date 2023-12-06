@@ -87,18 +87,19 @@ const GameTest = () => {
       <div className="computer-card">
         <h2>Computer Card</h2>
         <div className="flex justify-center">
-          <img src={computerCard?.images?.large} className="m-2 max-w-sm" />
+          <img src={computerCard?.images?.large} className="m-2 max-w-sm mx-auto" />
         </div>
 
         <div className="flex justify-center">
-          <p>{computerHP}</p>
+          
           <div
-            className="health-bar w-4/5 h-5 p-1 bg-gray-300 rounded relative"
+            className="health-bar flex gap-1 items-center w-4/5 h-7 p-1 bg-gray-300 rounded relative"
             data-total="1000"
             data-value="1000"
           >
+            <p>{computerHP}</p>
             <div
-              className="bar bg-green-500 h-2.5 relative"
+              className="bar bg-green-500 h-5 relative"
               style={{ width: `${barWidth}%` }}
             ></div>
             <div className="hit bg-white bg-opacity-60 absolute top-0 right-0 bottom-0 w-0"></div>
@@ -128,22 +129,22 @@ const GameTest = () => {
 
 
         <div className="flex justify-center">
-          <img src={playerCard?.images?.large} className="m-2 max-w-sm min-w-xs" />
+          <img src={playerCard?.images?.large} className="m-2 max-w-sm mx-auto" />
         </div>
         
         <div className="flex justify-center">
           <div
-            className="health-bar w-4/5 h-5 p-1 bg-gray-300 rounded relative"
+            className="health-bar flex-row-reverse flex gap-1 items-center w-4/5 h-7 p-1 bg-gray-300 rounded relative"
             data-total="1000"
             data-value="1000"
-          >
+          ><p>{playerHP}</p>
             <div
-              className="bar bg-green-500 h-2.5 relative"
+              className="bar bg-green-500 h-5 relative"
               style={{ width: `${playerBarWidth}%` }}
             ></div>
             <div className="hit bg-white bg-opacity-60 absolute top-0 right-0 bottom-0 w-0"></div>
           </div>
-          <p>{playerHP}</p>
+          
         </div>
       </div>
     </div>
