@@ -3,7 +3,7 @@ import Modal from "react-modal";
 
 
 
-function ModalTest() {
+const ModalTest = () => {
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -20,6 +20,9 @@ function ModalTest() {
     setIsOpen(false);
   }
 
+
+
+  
   return (
     <div>
       <button onClick={openModal}>Open Modal</button>

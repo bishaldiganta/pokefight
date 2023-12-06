@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import pokeArray from "../game/pokearray"; // these are the card ids which are available to fight with
 import { getpokeCard } from "../api/tcgapi"; // Pokemon Card Api function which returns back objects for a card with one id
-import WinningPage from "./WinningPage";
+import Modal from "react-modal";
+import { motion } from "framer-motion"
 
 const GameTest = () => {
   const [computerCard, setComputerCard] = useState({}); // card object of computer gets saved here
@@ -9,10 +10,28 @@ const GameTest = () => {
 
   const [computerHP, setComputerHP] = useState(1); // Health Points of computer
   const [playerHP, setPlayerHP] = useState(1); // Health points of user
+  const [modalIsOpen, setIsOpen] = useState(false);
+
 
   useEffect(() => {
     assignCards(); // once the page is rendered the computer and the user get assigned a random card from the pokearray array
   }, []);
+
+  let subtitle;
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = "#f00";
+  }
+
+  function closeModal() {
+    setIsOpen(false)
+    assignCards();
+  }
 
   const assignCards = () => {
     const computernumber = generateRandomHand();
@@ -52,8 +71,11 @@ const GameTest = () => {
     setComputerHP((prev) => {
       return prev - damage;
     });
+    if (computerHP - damage <= 0) {
+      openModal();
+    }
     console.log(computerHP);
-    setTimeout(computerDamage, 2000);
+    setTimeout(computerDamage, 500); // TO-DO Add framer motion for the health bar that reduces. 
   };
   const barWidth = (computerHP / computerCard?.hp) * 100;
 
@@ -67,17 +89,26 @@ const GameTest = () => {
     setPlayerHP((prev) => {
       return prev - damage;
     });
+    if (playerHP - damage <= 0) {
+      openModal();
+    }
     console.log(playerHP);
   };
   const playerBarWidth = (playerHP / playerCard?.hp) * 100;
 
-  return computerHP <= 0 ? (
-    <WinningPage />
-  ) : playerHP <= 0 ? (
-    "you are a looser"
-  ) : (
-    <div className="flex flex-row-reverse m-6">
-      
+  return (
+    <div className="flex flex-row-reverse m-6 justify-center">
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        contentLabel="Example Modal"
+        className="align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+      >
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>{playerHP<=0?"You Lose":"You Win"}</h2>
+        <button onClick={closeModal}>close</button>
+        <div>I am a modal</div>
+      </Modal>
       <div className="computer-card">
         <h2>Computer Card</h2>
         <div className="flex justify-center">
@@ -117,7 +148,17 @@ const GameTest = () => {
           })}{" "}
           {/* TO-DO Add conditional styling for buttons CLSX*/}{" "}
         </div>
-        <img src="../../public/assets/images/15.png" alt="" className="w-1/6" />
+        <motion.img animate={{
+        scale: [1, 2, 2, 1, 1],
+        rotate: [0, 0, 180, 180, 0],
+        borderRadius: ["0%", "0%", "50%", "50%", "0%"]
+      }}
+      transition={{
+        duration: 2,
+        ease: "easeInOut",
+        times: [0, 0.2, 0.5, 0.8, 1],
+        
+      }} src="../public/assets/svg/arenafight.svg" alt="" className="w-3/6" />
       </div>
 
       <div className="player-card">
