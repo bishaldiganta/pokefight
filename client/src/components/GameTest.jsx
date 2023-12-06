@@ -50,7 +50,6 @@ const GameTest = () => {
       })
       .damage.replace(/\D/g, "");
     setComputerHP((prev) => {
-      if (prev - damage <= 0) return "you won";
       return prev - damage;
     });
     console.log(computerHP);
@@ -61,37 +60,33 @@ const GameTest = () => {
   const computerDamage = () => {
     const attackAmount = computerCard.attacks.length;
     const attackIndex = Math.floor(Math.random() * attackAmount);
-    console.log(
-      "the length of the array is:",
-      attackAmount,
-      "the random number is",
-      attackIndex
-    );
+
     const damage = +computerCard.attacks[attackIndex].damage.replace(/\D/g, "");
 
     console.log("computer Damage", damage);
     setPlayerHP((prev) => {
-      if (prev - damage <= 0) return "you lose";
       return prev - damage;
     });
     console.log(playerHP);
   };
   const playerBarWidth = (playerHP / playerCard?.hp) * 100;
 
-  return computerHP === "you won" ? (
+  return computerHP <= 0 ? (
     <WinningPage />
-  ) : playerHP === "you lose" ? (
+  ) : playerHP <= 0 ? (
     "you are a looser"
   ) : (
     <div className="flex flex-row-reverse m-6">
       <div className="computer-card">
         <h2>Computer Card</h2>
         <div className="flex justify-center">
-          <img src={computerCard?.images?.large} className="m-2 max-w-sm mx-auto" />
+          <img
+            src={computerCard?.images?.large}
+            className="m-2 max-w-sm mx-auto"
+          />
         </div>
 
         <div className="flex justify-center">
-          
           <div
             className="health-bar flex gap-1 items-center w-4/5 h-7 p-1 bg-gray-300 rounded relative"
             data-total="1000"
@@ -107,7 +102,7 @@ const GameTest = () => {
         </div>
       </div>
       <div className="flex flex-col items-center justify-center ">
-      <div className="flex gap-2 justify-center">
+        <div className="flex gap-2 justify-center">
           {playerCard?.attacks.map((attack) => {
             return (
               <button
@@ -125,26 +120,28 @@ const GameTest = () => {
       </div>
 
       <div className="player-card">
-      <h2>Player Card</h2>
-
+        <h2>Player Card</h2>
 
         <div className="flex justify-center">
-          <img src={playerCard?.images?.large} className="m-2 max-w-sm mx-auto" />
+          <img
+            src={playerCard?.images?.large}
+            className="m-2 max-w-sm mx-auto"
+          />
         </div>
-        
+
         <div className="flex justify-center">
           <div
             className="health-bar flex-row-reverse flex gap-1 items-center w-4/5 h-7 p-1 bg-gray-300 rounded relative"
             data-total="1000"
             data-value="1000"
-          ><p>{playerHP}</p>
+          >
+            <p>{playerHP}</p>
             <div
               className="bar bg-green-500 h-5 relative"
               style={{ width: `${playerBarWidth}%` }}
             ></div>
             <div className="hit bg-white bg-opacity-60 absolute top-0 right-0 bottom-0 w-0"></div>
           </div>
-          
         </div>
       </div>
     </div>
