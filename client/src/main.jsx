@@ -14,8 +14,10 @@ import getSinglePokemon from "./api/pokeapi";
 import { getPokeCards } from "./api/tcgapi.js";
 import GameTest from "./components/GameTest.jsx";
 import Modal from "react-modal";
+import WinningPage from "./pages/WinningPage";
+import LosingPage from "./pages/LosingPage";
 
-Modal.setAppElement('#root');
+Modal.setAppElement("#root");
 
 const router = createBrowserRouter([
   {
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
       {
         path: "/game",
         element: <GameTest />,
+      },
+      {
+        path: "/win",
+        element: <WinningPage />,
+      },
+      {
+        path: "/lose",
+        element: <LosingPage />,
       },
     ],
   },

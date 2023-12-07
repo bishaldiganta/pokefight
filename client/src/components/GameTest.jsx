@@ -4,6 +4,7 @@ import { getpokeCard } from "../api/tcgapi"; // Pokemon Card Api function which 
 import Modal from "react-modal";
 import { motion } from "framer-motion";
 import { VscHeart, VscHeartFilled } from "react-icons/vsc";
+import { useNavigate } from "react-router-dom";
 
 const GameTest = () => {
   const [computerCard, setComputerCard] = useState({}); // card object of computer gets saved here
@@ -15,6 +16,7 @@ const GameTest = () => {
 
   const [playerLives, setPlayerLives] = useState(5);
   const [computerLives, setComputerLives] = useState(5);
+  const navigate = useNavigate();
 
   useEffect(() => {
     assignCards(); // once the page is rendered the computer and the user get assigned a random card from the pokearray array
@@ -78,6 +80,9 @@ const GameTest = () => {
       setComputerLives((prev) => {
         return prev - 1;
       });
+      if (computerLives - 1 <= 0) {
+        navigate("/win");
+      }
       openModal();
     }
     console.log(computerHP);
@@ -99,6 +104,9 @@ const GameTest = () => {
       setPlayerLives((prev) => {
         return prev - 1;
       });
+      if (playerLives - 1 <= 0) {
+        navigate("/lose");
+      }
       openModal();
     }
     console.log("Playerlives", playerLives);
@@ -128,8 +136,8 @@ const GameTest = () => {
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>
           {playerHP <= 0 ? "You Lose" : "You Win"}
         </h2>
+        <img src="" alt="" />
         <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
       </Modal>
       <div className="computer-card">
         <h2>Computer Card</h2>
