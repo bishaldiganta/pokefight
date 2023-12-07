@@ -20,8 +20,6 @@ const ModalTest = () => {
     setIsOpen(false);
   }
 
-
-
   
   return (
     <div>

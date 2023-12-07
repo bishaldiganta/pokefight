@@ -1,6 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import clsx from "clsx";
+import { motion } from "framer-motion";
+
 
 const typeColors = {
   normal: "bg-gradient-to-b from-slate-600 via-gray-400 to-slate-800",
@@ -31,9 +33,13 @@ const PokemonCard = ({ pokemon }) => {
   const backgroundColorClass =
     typeColors[pokemon.type[0].toLowerCase()] || "bg-gray-400";
   return (
-    <div
-      //TO-DO: make the background round and the japanes text bigger
-      //order-first lg:order-none border-8 border-solid border-amber-300 py-10 px-8 pb-28
+    <motion.div
+      whileHover={{ scale: 1.2, rotate: 360 }}
+      whileTap={{
+        scale: 0.8,
+        rotate: -360,
+        borderRadius: "100%"
+      }}
       className={clsx(
         "shadow-lg rounded-full aspect-square max-w-xs",
         backgroundColorClass
@@ -41,11 +47,10 @@ const PokemonCard = ({ pokemon }) => {
       onClick={handleClick}
     >
       <div className="relative w-full ">
-        <h2 className="text-2xl absolute -translate-y-1/2 -translate-x-1/2 left-1/2 top-1/2 ">
-          {/* TO-DO : make font stand out more either by using backdrop-contrast-50 or a background color , or move the writin down into the orbs */}
+        <h2 className="text-2xl absolute -translate-y-1/2 -translate-x-1/2 left-1/2 top-1/2">
           {pokemon.name.english}
         </h2>
-        <p className="text-4xl tracking-wider	text-stone-700/50 absolute -translate-y-1/2 -translate-x-1/4 left-1/2 top-1/2 w-full">
+        <p className="text-4xl tracking-wider text-stone-700/50 absolute -translate-y-1/2 -translate-x-1/4 left-1/2 top-1/2 w-full">
           {pokemon.name.japanese}
         </p>
       </div>
@@ -55,7 +60,7 @@ const PokemonCard = ({ pokemon }) => {
         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`}
         alt={pokemon.name.english}
       />
-    </div>
+    </motion.div>
   );
 };
 
