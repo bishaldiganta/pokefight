@@ -10,16 +10,34 @@ function Navbar() {
         <div>
           <NavLink
             to="/"
-            className="px-4 hover:text-gray-200 text-lg font-bold"
+            className={({ isActive }) =>
+              isActive
+                ? "px-4 hover:text-gray-200 text-lg font-bold bg-slate-500"
+                : "px-4 hover:text-gray-200 text-lg font-bold"
+            }
           >
             Pokédex
           </NavLink>
-          <NavLink to="/game" className="px-4 hover:text-gray-200 text-lg font-bold">
+          <NavLink
+            to="/game"
+            className={({ isActive }) =>
+              isActive
+                ? "px-4 hover:text-gray-200 text-lg font-bold bg-slate-500"
+                : "px-4 hover:text-gray-200 text-lg font-bold"
+            }
+          >
             Game
           </NavLink>
-          <NavLink to="" className="px-4 hover:text-gray-200 text-lg font-bold">
+          {/* <NavLink
+            to=""
+            className={({ isActive }) =>
+              isActive
+                ? "px-4 hover:text-gray-200 text-lg font-bold bg-slate-500"
+                : "px-4 hover:text-gray-200 text-lg font-bold"
+            }
+          >
             Leaderboard
-          </NavLink>
+          </NavLink> */}
         </div>
       </div>
     </nav>

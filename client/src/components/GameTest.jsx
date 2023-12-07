@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import pokeArray from "../game/pokearray"; // these are the card ids which are available to fight with
 import { getpokeCard } from "../api/tcgapi"; // Pokemon Card Api function which returns back objects for a card with one id
 import Modal from "react-modal";
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { VscHeart, VscHeartFilled } from "react-icons/vsc";
 
 const GameTest = () => {
   const [computerCard, setComputerCard] = useState({}); // card object of computer gets saved here
@@ -12,6 +13,8 @@ const GameTest = () => {
   const [playerHP, setPlayerHP] = useState(1); // Health points of user
   const [modalIsOpen, setIsOpen] = useState(false);
 
+  const [playerLives, setPlayerLives] = useState(5);
+  const [computerLives, setComputerLives] = useState(5);
 
   useEffect(() => {
     assignCards(); // once the page is rendered the computer and the user get assigned a random card from the pokearray array
@@ -29,7 +32,7 @@ const GameTest = () => {
   }
 
   function closeModal() {
-    setIsOpen(false)
+    setIsOpen(false);
     assignCards();
   }
 
@@ -72,10 +75,13 @@ const GameTest = () => {
       return prev - damage;
     });
     if (computerHP - damage <= 0) {
+      setComputerLives((prev) => {
+        return prev - 1;
+      });
       openModal();
     }
     console.log(computerHP);
-    setTimeout(computerDamage, 500); // TO-DO Add framer motion for the health bar that reduces. 
+    setTimeout(computerDamage, 500); // TO-DO Add framer motion for the health bar that reduces.
   };
   const barWidth = (computerHP / computerCard?.hp) * 100;
 
@@ -90,11 +96,25 @@ const GameTest = () => {
       return prev - damage;
     });
     if (playerHP - damage <= 0) {
+      setPlayerLives((prev) => {
+        return prev - 1;
+      });
       openModal();
     }
-    console.log(playerHP);
+    console.log("Playerlives", playerLives);
   };
   const playerBarWidth = (playerHP / playerCard?.hp) * 100;
+
+  const generateHeartIcons = (count) => {
+    const hearts = [];
+    for (let i = 0; i < count; i++) {
+      hearts.push(<VscHeartFilled key={i} />);
+    }
+    return hearts;
+  };
+
+  // TO-DO: create logic that the game should end after one lives are empty
+  // after winning the information gets put on the leaderboard
 
   return (
     <div className="flex flex-row-reverse m-6 justify-center">
@@ -105,12 +125,16 @@ const GameTest = () => {
         contentLabel="Example Modal"
         className="align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>{playerHP<=0?"You Lose":"You Win"}</h2>
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>
+          {playerHP <= 0 ? "You Lose" : "You Win"}
+        </h2>
         <button onClick={closeModal}>close</button>
         <div>I am a modal</div>
       </Modal>
       <div className="computer-card">
         <h2>Computer Card</h2>
+        <div className="flex gap-1">{generateHeartIcons(computerLives)}</div>
+
         <div className="flex justify-center">
           <img
             src={computerCard?.images?.large}
@@ -148,22 +172,26 @@ const GameTest = () => {
           })}{" "}
           {/* TO-DO Add conditional styling for buttons CLSX*/}{" "}
         </div>
-        <motion.img animate={{
-        scale: [1, 2, 2, 1, 1],
-        rotate: [0, 0, 180, 180, 0],
-        borderRadius: ["0%", "0%", "50%", "50%", "0%"]
-      }}
-      transition={{
-        duration: 2,
-        ease: "easeInOut",
-        times: [0, 0.2, 0.5, 0.8, 1],
-        
-      }} src="../public/assets/svg/arenafight.svg" alt="" className="w-3/6" />
+        <motion.img
+          animate={{
+            scale: [1, 2, 2, 1, 1],
+            rotate: [0, 0, 180, 180, 0],
+            borderRadius: ["0%", "0%", "50%", "50%", "0%"],
+          }}
+          transition={{
+            duration: 2,
+            ease: "easeInOut",
+            times: [0, 0.2, 0.5, 0.8, 1],
+          }}
+          src="../public/assets/svg/arenafight.svg"
+          alt=""
+          className="w-3/6"
+        />
       </div>
 
       <div className="player-card">
         <h2>Player Card</h2>
-
+        <div className="flex gap-1">{generateHeartIcons(playerLives)}</div>
         <div className="flex justify-center">
           <img
             src={playerCard?.images?.large}
