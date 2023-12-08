@@ -16,4 +16,17 @@ const getPokemons = async ({ request }) => {
   }
 };
 
-export default getPokemons;
+const updatePokemon = async (pokeindex, score) => {
+  try {
+    const result = await axios.put(
+      `http://localhost:8000/pokemon/${pokeindex}`,
+      { score: score }
+    );
+    console.log("result of put", result.data);
+    return result.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { getPokemons, updatePokemon };

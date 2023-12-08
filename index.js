@@ -8,6 +8,7 @@ require("./db");
 const pokeRouter = require("./routes/pokemon");
 
 app.use(cors());
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Hello World");

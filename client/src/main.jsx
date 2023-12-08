@@ -9,7 +9,7 @@ import PokeList from "./pages/PokeList";
 import PokeDetails from "./pages/PokeDetails";
 
 //Helper functions for the APIS
-import getPokemons from "./api/pokemon";
+import { getPokemons } from "./api/pokemon";
 import getSinglePokemon from "./api/pokeapi";
 import { getPokeCards } from "./api/tcgapi.js";
 import GameTest from "./components/GameTest.jsx";

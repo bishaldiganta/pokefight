@@ -5,6 +5,7 @@ import Modal from "react-modal";
 import { motion } from "framer-motion";
 import { VscHeart, VscHeartFilled } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
+import { updatePokemon } from "../api/pokemon.js";
 
 const GameTest = () => {
   const [computerCard, setComputerCard] = useState({}); // card object of computer gets saved here

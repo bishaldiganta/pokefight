@@ -34,4 +34,19 @@ const getSinglePokemon = async (req, res) => {
   }
 };
 
-module.exports = { getPokemons, getSinglePokemon };
+const updatePokemon = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { score } = req.body;
+
+    const filter = { id: +id };
+    const update = { score: score };
+    const pokemon = await Pokemon.findOneAndUpdate(filter, update);
+    res.json(pokemon);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Ops... Something Went Wrong");
+  }
+};
+
+module.exports = { getPokemons, getSinglePokemon, updatePokemon };
