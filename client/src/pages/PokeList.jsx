@@ -48,22 +48,48 @@ const PokeList = () => {
 
   return (
     <div className="min-h-screen sm:p-10 p-5 lg:px-10 bg-gray-100">
-
-      <form className="flex justify-center m-8 gap-4" onSubmit={handleSearchSubmit}>
-        <img className="" src="../assets/images/pokesearch.png" alt="" width="50px" />
-        <input className="px-3 text-xl" type="search" onChange={handleSearchChange} />
+      <form
+        className="flex justify-center m-8 gap-4 pb-8"
+        onSubmit={handleSearchSubmit}
+      >
+        <img src="../assets/images/pokesearch.png" alt="" width="50px" />
+        <input
+          className="px-3 text-xl text-gray-800 rounded-md bg-yellow-100 focus:outline-none focus:ring-2 focus:ring-yellow-300 focus:border-transparent shadow-lg focus:shadow-outline"
+          type="search"
+          onChange={handleSearchChange}
+        />
       </form>
       <div className=" max-w-5xl mx-auto place-content-center justify-center justify-items-center grid md:grid-cols-2 lg:grid-cols-3 gap-20 m-3">
         {pokemons.map((pokemon) => {
           return <PokemonCard key={pokemon.id} pokemon={pokemon} />;
         })}
       </div>
-      <div className="flex gap-2 justify-center m-4">
+      <div className="flex gap-40 justify-center m-4 py-10">
+        <button
+          disabled={skip === 0}
+          onClick={handlePrev}
+          className={`px-4 py-2 text-gray-900 hover:text-gray-700 text-2xl bg-yellow-200 opacity-90 font-bold ${
+            skip === 0
+              ? "cursor-not-allowed opacity-40"
+              : "bg-slate-50 opacity-90 rounded-lg"
+          }`}
+        >
+          Prev
+        </button>
+        <button
+          onClick={handleNext}
+          className="px-4 py-2 text-gray-900 hover:text-gray-700 text-2xl font-bold bg-yellow-200 opacity-90 rounded-lg"
+        >
+          Next
+        </button>
+      </div>
+
+      {/* <div className="flex gap-2 justify-center m-4">
         <button disabled={skip === 0} onClick={handlePrev}>
           Prev
         </button>
         <button onClick={handleNext}>Next</button>
-      </div>
+      </div> */}
     </div>
   );
 };
