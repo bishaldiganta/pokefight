@@ -78,6 +78,7 @@ const GameTest = () => {
       return prev - damage;
     });
     if (computerHP - damage <= 0) {
+      updatePokemon(playerCard.nationalPokedexNumbers, 1);
       setComputerLives((prev) => {
         return prev - 1;
       });
@@ -102,6 +103,7 @@ const GameTest = () => {
       return prev - damage;
     });
     if (playerHP - damage <= 0) {
+      updatePokemon(computerCard.nationalPokedexNumbers, 1);
       setPlayerLives((prev) => {
         return prev - 1;
       });

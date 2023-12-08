@@ -38,10 +38,9 @@ const updatePokemon = async (req, res) => {
   try {
     const { id } = req.params;
     const { score } = req.body;
-
     const filter = { id: +id };
-    const update = { score: score };
-    const pokemon = await Pokemon.findOneAndUpdate(filter, update);
+    const poke = await Pokemon.findOne(filter);
+    const pokemon = await Pokemon.findOneAndUpdate(filter, { $inc: { score } });
     res.json(pokemon);
   } catch (error) {
     console.log(error);
