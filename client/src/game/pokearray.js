@@ -37,13 +37,16 @@ const pokeArray = [
   "det1-7",
   "base5-52",
   "g1-40",
-  "gym1-32",
+  "gym1-57",
   "ecard1-14",
   "bw8-43",
   "hgss3-50",
   "base3-5",
   "xy12-49",
-  "det1-16"
+  "det1-16",
+  "ex12-10",
+  "neo1-35",
+  "xy6-43",
 ];
 
 export default pokeArray;

@@ -5,6 +5,7 @@ const pokeSchema = new Schema({
   name: { type: Object },
   type: { type: Array },
   base: { type: Object },
+  score: { type: Number },
 });
 
 const Pokemon = model("Pokemon", pokeSchema);
