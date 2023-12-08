@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import background from "../assets/svg/background.svg";
 import GameTest from "../components/GameTest";
-import ModalTest from "../components/ModalTest";
 
 const RootLayout = () => {
   return (
@@ -15,10 +14,7 @@ const RootLayout = () => {
       <div>
         <Outlet />
       </div>
-      <div>
-        {/*         <ModalTest />
-         */}{" "}
-      </div>
+   
       <div>
         <Footer />
       </div>

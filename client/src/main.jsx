@@ -41,11 +41,11 @@ const router = createBrowserRouter([
         element: <GameTest />,
       },
       {
-        path: "/win",
+        path: "/game/win",
         element: <WinningPage />,
       },
       {
-        path: "/lose",
+        path: "/game/lose",
         element: <LosingPage />,
       },
     ],

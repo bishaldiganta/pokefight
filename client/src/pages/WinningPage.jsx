@@ -8,7 +8,7 @@ const WinningPage = () => {
   };
   return (
     <>
-      <h1>YOU WIN</h1>;<button onClick={playAgain}>PLAY AGAIN</button>
+      <h1>YOU WIN</h1><button onClick={playAgain}>PLAY AGAIN</button>
     </>
   );
 };

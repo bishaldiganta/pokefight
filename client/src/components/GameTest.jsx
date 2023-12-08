@@ -81,7 +81,7 @@ const GameTest = () => {
         return prev - 1;
       });
       if (computerLives - 1 <= 0) {
-        navigate("/win");
+        navigate("/game/win");
       }
       openModal();
     }
@@ -105,7 +105,7 @@ const GameTest = () => {
         return prev - 1;
       });
       if (playerLives - 1 <= 0) {
-        navigate("/lose");
+        navigate("/game/lose");
       }
       openModal();
     }
@@ -126,19 +126,28 @@ const GameTest = () => {
 
   return (
     <div className="flex flex-row-reverse m-6 justify-center">
-      <Modal
-        isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
-        onRequestClose={closeModal}
-        contentLabel="Example Modal"
-        className="align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
-      >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>
-          {playerHP <= 0 ? "You Lose" : "You Win"}
-        </h2>
-        <img src="" alt="" />
-        <button onClick={closeModal}>close</button>
-      </Modal>
+      <div className="flex justify-center" id="modal">
+        <Modal
+          isOpen={modalIsOpen}
+          onAfterOpen={afterOpenModal}
+          onRequestClose={closeModal}
+          contentLabel="Example Modal"
+          className="bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+        >
+          <h2 ref={(_subtitle) => (subtitle = _subtitle)}>
+            {playerHP <= 0 ? "You Lose" : "You Win"}
+          </h2>
+          <img
+            src={
+              playerHP <= 0
+                ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${computerCard?.nationalPokedexNumbers}.gif`
+                : `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${playerCard?.nationalPokedexNumbers}.gif`
+            }
+            alt={`Illustration of ${playerCard?.name}`}
+          />
+          <button onClick={closeModal}>close</button>
+        </Modal>
+      </div>
       <div className="computer-card">
         <h2>Computer Card</h2>
         <div className="flex gap-1">{generateHeartIcons(computerLives)}</div>
@@ -170,7 +179,7 @@ const GameTest = () => {
           {playerCard?.attacks.map((attack) => {
             return (
               <button
-                className="rounded-lg px-4 py-2 bg-red-500 text-blue-100 hover:bg-blue-600 duration-300 m-2"
+                className="rounded-lg px-4 py-2 bg-red-500 text-blue-100 hover:bg-blue-600 duration-200 m-2"
                 value={attack.name}
                 onClick={playerDamage}
               >

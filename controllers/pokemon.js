@@ -4,7 +4,6 @@ const Pokemon = require("../models/pokemon");
 const getPokemons = async (req, res) => {
   try {
     const { skip, limit = 9, q } = req.query;
-    console.log(q);
     if (!q) {
       const pokemons = await Pokemon.find({})
         .sort({ id: 1 })
@@ -12,8 +11,9 @@ const getPokemons = async (req, res) => {
         .limit(limit);
       res.json(pokemons);
     } else {
-      // TO-DO: capitalize the first letter of q to ensure the name can be found
-      const filterpokemons = await Pokemon.find({ "name.english": q });
+      const name = q.charAt(0).toUpperCase() + q.slice(1);
+      console.log(name);
+      const filterpokemons = await Pokemon.find({ "name.english": name });
       res.json(filterpokemons);
     }
   } catch (error) {
