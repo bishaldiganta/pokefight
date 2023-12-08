@@ -3,10 +3,14 @@ const Pokemon = require("../models/pokemon");
 
 const getPokemons = async (req, res) => {
   try {
-    const { skip, limit = 9, q } = req.query;
+    const { skip, limit = 9, q, sort } = req.query;
+    console.log(sort);
+    const sortBy = sort === "id" ? "id" : "score"; // Use the actual field for sorting
+    const sortOrder = sort === "id" ? 1 : -1;
+
     if (!q) {
       const pokemons = await Pokemon.find({})
-        .sort({ id: 1 })
+        .sort({ [sortBy]: sortOrder })
         .skip(skip)
         .limit(limit);
       res.json(pokemons);

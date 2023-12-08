@@ -9,13 +9,14 @@ import PokeList from "./pages/PokeList";
 import PokeDetails from "./pages/PokeDetails";
 
 //Helper functions for the APIS
-import { getPokemons } from "./api/pokemon";
+import { getPokemons, getAllPokemons } from "./api/pokemon";
 import getSinglePokemon from "./api/pokeapi";
 import { getPokeCards } from "./api/tcgapi.js";
 import GameTest from "./components/GameTest.jsx";
 import Modal from "react-modal";
 import WinningPage from "./pages/WinningPage";
 import LosingPage from "./pages/LosingPage";
+import Leaderboard from "./pages/Leaderboard";
 
 Modal.setAppElement("#root");
 
@@ -47,6 +48,11 @@ const router = createBrowserRouter([
       {
         path: "/game/lose",
         element: <LosingPage />,
+      },
+      {
+        path: "/leaderboard",
+        element: <Leaderboard />,
+        loader: getAllPokemons,
       },
     ],
   },

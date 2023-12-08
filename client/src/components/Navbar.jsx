@@ -28,16 +28,16 @@ function Navbar() {
           >
             Game
           </NavLink>
-          {/* <NavLink
-            to=""
+          <NavLink
+            to="/leaderboard"
             className={({ isActive }) =>
               isActive
-                ? "px-4 hover:text-gray-200 text-lg font-bold bg-slate-500"
-                : "px-4 hover:text-gray-200 text-lg font-bold"
+                ? "px-4 py-2 text-gray-800 hover:text-gray-500 text-xl font-bold bg-slate-50 opacity-80 rounded-lg"
+                : "px-4 py-2 text-gray-800 hover:text-gray-500 text-xl font-bold"
             }
           >
             Leaderboard
-          </NavLink> */}
+          </NavLink>
         </div>
       </div>
     </nav>
