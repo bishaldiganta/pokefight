@@ -125,7 +125,7 @@ const GameTest = () => {
   // after winning the information gets put on the leaderboard
 
   return (
-    <div className="flex flex-row-reverse m-6 justify-center">
+    <div className="flex flex-row-reverse m-6 justify-center gap-5">
       <div className="flex justify-center" id="modal">
         <Modal
           isOpen={modalIsOpen}
