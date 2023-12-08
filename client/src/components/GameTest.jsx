@@ -86,7 +86,7 @@ const GameTest = () => {
       openModal();
     }
     console.log(computerHP);
-    setTimeout(computerDamage, 500); // TO-DO Add framer motion for the health bar that reduces.
+    setTimeout(computerDamage, 200); // TO-DO Add framer motion for the health bar that reduces.
   };
   const barWidth = (computerHP / computerCard?.hp) * 100;
 

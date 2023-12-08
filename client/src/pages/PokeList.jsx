@@ -48,11 +48,12 @@ const PokeList = () => {
 
   return (
     <div className="min-h-screen sm:p-10 p-5 lg:px-10 bg-gray-100">
-      <form className="flex justify-center m-8" onSubmit={handleSearchSubmit}>
-        <img src="../assets/images/pokesearch.png" alt="" width="50px" />
-        <input type="search" onChange={handleSearchChange} />
+
+      <form className="flex justify-center m-8 gap-4" onSubmit={handleSearchSubmit}>
+        <img className="" src="../assets/images/pokesearch.png" alt="" width="50px" />
+        <input className="px-3 text-xl" type="search" onChange={handleSearchChange} />
       </form>
-      <div className=" max-w-5xl mx-auto place-content-center justify-center justify-items-center grid md:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-10 m-3">
+      <div className=" max-w-5xl mx-auto place-content-center justify-center justify-items-center grid md:grid-cols-2 lg:grid-cols-3 gap-20 m-3">
         {pokemons.map((pokemon) => {
           return <PokemonCard key={pokemon.id} pokemon={pokemon} />;
         })}
