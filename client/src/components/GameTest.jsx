@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { VscHeart, VscHeartFilled } from "react-icons/vsc";
 import { useNavigate } from "react-router-dom";
 import { updatePokemon } from "../api/pokemon.js";
+import clsx from "clsx";
 
 const GameTest = () => {
   const [computerCard, setComputerCard] = useState({}); // card object of computer gets saved here
@@ -123,9 +124,28 @@ const GameTest = () => {
     }
     return hearts;
   };
-
-  // TO-DO: create logic that the game should end after one lives are empty
-  // after winning the information gets put on the leaderboard
+  const typeColors = {
+    normal: "bg-gray-400",
+    fire: "bg-red-400",
+    water: "bg-blue-400",
+    electric: "bg-yellow-400",
+    grass: "bg-green-400",
+    ice: "bg-blue-200",
+    fighting: "bg-stone-900",
+    poison: "bg-purple-400",
+    ground: "bg-yellow-600",
+    flying: "bg-blue-300",
+    fairy: "bg-pink-400",
+    psychic: "bg-purple-400",
+    rock: "bg-neutral-400",
+    dragon: "bg-teal-400",
+    lightning: "",
+    dark: "bg-zinc-400",
+    ice: "bg-cyan-400",
+    colorless: "bg-neutral-400",
+  };
+  const backgroundColorClass =
+    typeColors[playerCard?.types[0].toLowerCase()] || " bg-red-500";
 
   return (
     <div className="flex flex-row-reverse m-6 justify-center gap-5">
@@ -182,7 +202,10 @@ const GameTest = () => {
           {playerCard?.attacks.map((attack) => {
             return (
               <button
-                className="rounded-lg px-4 py-2 bg-red-500 text-blue-100 hover:bg-blue-600 duration-200 m-2"
+                className={clsx(
+                  "rounded-lg px-4 py-2 text-blue-100 hover:bg-blue-600 duration-200 m-2",
+                  backgroundColorClass
+                )}
                 value={attack.name}
                 onClick={playerDamage}
               >
