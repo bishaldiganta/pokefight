@@ -88,7 +88,7 @@ const GameTest = () => {
       openModal();
     }
     console.log(computerHP);
-    setTimeout(computerDamage, 500); // TO-DO Add framer motion for the health bar that reduces.
+    setTimeout(computerDamage, 200); // TO-DO Add framer motion for the health bar that reduces.
   };
   const barWidth = (computerHP / computerCard?.hp) * 100;
 
@@ -128,7 +128,7 @@ const GameTest = () => {
   // after winning the information gets put on the leaderboard
 
   return (
-    <div className="flex flex-row-reverse m-6 justify-center">
+    <div className="flex flex-row-reverse m-6 justify-center gap-5">
       <div className="flex justify-center" id="modal">
         <Modal
           isOpen={modalIsOpen}

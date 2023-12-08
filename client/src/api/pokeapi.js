@@ -2,7 +2,7 @@ import axios from "axios";
 
 const url = `https://pokeapi.co/api/v2/pokemon/`;
 
-const getSinglePokemon = async ({ params }) => {
+const getSinglePokemon = async (name) => {
 	try {
 		const { name } = params;
 		const response = await axios(`${url}${name}`);

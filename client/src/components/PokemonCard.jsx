@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 
-
 const typeColors = {
   normal: "bg-gradient-to-b from-slate-600 via-gray-400 to-slate-800",
   fire: "bg-gradient-to-b from-orange-600 via-amber-400 to-yellow-800",
@@ -33,34 +32,47 @@ const PokemonCard = ({ pokemon }) => {
   const backgroundColorClass =
     typeColors[pokemon.type[0].toLowerCase()] || "bg-gray-400";
   return (
-    <motion.div
-      whileHover={{ scale: 1.2, rotate: 360 }}
-      whileTap={{
-        scale: 0.8,
-        rotate: -360,
-        borderRadius: "100%"
-      }}
-      className={clsx(
-        "shadow-lg rounded-full aspect-square max-w-xs",
-        backgroundColorClass
-      )}
-      onClick={handleClick}
-    >
-      <div className="relative w-full ">
-        <h2 className="text-2xl absolute -translate-y-1/2 -translate-x-1/2 left-1/2 top-1/2">
-          {pokemon.name.english}
-        </h2>
-        <p className="text-4xl tracking-wider text-stone-700/50 absolute -translate-y-1/2 -translate-x-1/4 left-1/2 top-1/2 w-full">
-          {pokemon.name.japanese}
-        </p>
-      </div>
-
-      <img
-        className="w-full object-cover"
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`}
-        alt={pokemon.name.english}
-      />
-    </motion.div>
+    <div>
+      <motion.div
+        /* whileHover={{ scale: 1, rotate: 45, speed: 90 }}
+        whileTap={{
+          scale: 0.8,
+          rotate: 260,
+          borderRadius: "100%",
+        }} */
+        whileHover={{ 
+          scale: 1.1, 
+          rotate: [0, -10, 10, -10, 10, 0], 
+          transition: { duration: 0.3, repeatType: "reverse" } 
+        }}
+        whileTap={{
+          scale: 0.95,
+          rotate: [0, -15, 15, -15, 15, 0],
+          transition: { duration: 0.6, repeat: 3, repeatType: "reverse" }
+        }}
+        className={clsx(
+          "shadow-lg rounded-full aspect-square max-w-xs",
+          backgroundColorClass
+        )}
+        onClick={handleClick}
+      >
+        <div className="relative w-full">
+          <h2 className="text-2xl absolute -translate-y-1/2 -translate-x-1/2 left-1/2 top-1/2">
+            {pokemon.name.english}
+          </h2>
+          <p className="text-4xl tracking-wider text-stone-700/50 absolute -translate-y-1/2 -translate-x-1/4 left-1/2 top-1/2 w-full">
+            {pokemon.name.japanese}
+          </p>
+        </div>
+        <div>
+          <img
+            className="w-full object-cover"
+            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokemon.id}.png`}
+            alt={pokemon.name.english}
+          />
+        </div>
+      </motion.div>
+    </div>
   );
 };
 

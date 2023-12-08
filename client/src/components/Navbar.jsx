@@ -2,12 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
-  //TO-DO Add Game Link and NavLink functionality
   return (
-    <nav className="rounded-md bg-yellow-400  text-black-700 p-3">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="text-xl font-bold ">PokéApp</div>
-        <div>
+    <nav className="rounded-md bg-yellow-300 text-black-700 p-3">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
+        <div className="text-xl font-bold mb-3 md:mb-0">PokéApp</div>
+        <div className="flex justify-between w-full md:w-auto">
           <NavLink
             to="/"
             className={({ isActive }) =>
