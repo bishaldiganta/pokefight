@@ -8,6 +8,10 @@ const WinningPage = () => {
     navigate("/game");
   };
 
+  const handleLeaderboard = () => {
+    navigate("/leaderboard");
+  };
+
   return (
     <div className="flex flex-col items-center justify-start h-screen bg-slate-200 mt-0 mb-auto pt-40">
       <motion.h1
@@ -18,8 +22,7 @@ const WinningPage = () => {
       >
         YOU WON!!
       </motion.h1>
-      <div>
-      </div>
+      <div></div>
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
@@ -27,6 +30,14 @@ const WinningPage = () => {
         className="rounded-lg px-4 py-2 bg-red-500 text-blue-100 hover:bg-blue-600 duration-200 m-2"
       >
         PLAY AGAIN
+      </motion.button>
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={handleLeaderboard}
+        className="px-4 py-2 text-gray-900 hover:text-gray-700 bg-yellow-200 opacity-90 rounded-lg"
+      >
+        LEADERBOARD
       </motion.button>
     </div>
   );
